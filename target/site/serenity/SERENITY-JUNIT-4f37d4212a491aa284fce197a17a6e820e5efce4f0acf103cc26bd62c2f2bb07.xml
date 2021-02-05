@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="As an user app" skipped="0" tests="2" time="48.73" timestamp="2021-02-05 03:28:14"><testcase name="Search in Amazon web store"><failure message="&#10;Expecting web element located by #mediaTab_heading_2 &gt; a &gt; span &gt; div:nth-child(1) &gt; span that is not displayed&#10;But got: web element is displayed" type="java.lang.AssertionError">
+Expecting web element located by #mediaTab_heading_2 &gt; a &gt; span &gt; div:nth-child(1) &gt; span that is not displayed
+But got: web element is displayed</failure><system-err>
+Expecting web element located by #mediaTab_heading_2 &gt; a &gt; span &gt; div:nth-child(1) &gt; span that is not displayed
+But got: web element is displayed&#13;
+co.com.proyectobase.screenplay.stepdefinitions.AppTestStepDefinitions.HeShouldBeAbleToSeeThatIsDisplay(AppTestStepDefinitions.java:57)&#13;
+✽.He should be able to see that is display: Paperback tab was not shown pre-selected(src/test/resources/features/appTest.feature:13)&#13;
+</system-err></testcase></testsuite>

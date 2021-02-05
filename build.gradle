@@ -1,0 +1,48 @@
+repositories {
+    jcenter()
+    mavenLocal()
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.39")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+dependencies {
+    testCompile('junit:junit:4.12')
+    testCompile('org.assertj:assertj-core:1.7.0')
+    testCompile('org.slf4j:slf4j-simple:1.7.7')
+    testCompile group: 'org.testng', name: 'testng', version: '7.3.0'
+
+    compile 'com.google.guava:guava:25.+'
+    compile 'net.serenity-bdd:serenity-screenplay:1.9.9'
+    compile 'net.serenity-bdd:serenity-screenplay-webdriver:1.9.9'
+    compile group: 'net.serenity-bdd', name: 'serenity-core', version: '2.0.39'
+    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: '2.0.39'
+    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.9.30'
+    compile group: 'net.serenity-bdd', name: 'serenity-ensure', version: '2.0.89'
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+}
+
+gradle.startParameter.continueOnFailure = true
+subprojects {
+    apply plugin: "java"
+    task copyReport(type: Copy) {
+        from "build/test-results"
+        into "$rootDir/build/xml-report"
+    }
+    test.finalizedBy(copyReport)
+}
+
+test.finalizedBy(aggregate)
