@@ -24,7 +24,29 @@ public class AppTestSteps extends PageObject {
         appTestPage.ValidateDescriptionOnThePositionIdResult(idPosition,productTitle);
     }
 
-    public void ValidateSelectecTab(String tabMsg) {
-        appTestPage.validateSelectedTab(tabMsg);
+    public void ValidateSelectecTab(String tabMsg) throws InterruptedException {
+        appTestPage.ValidateSelectedTab(tabMsg);
     }
+
+    public void ClickOnWishListButton(){
+        appTestPage.ClickOnWishListButton();
+    }
+
+    public void ClickOnSignInButton(){
+        appTestPage.ClickOnSignInButton();
+    }
+
+    public void ValidateSignInPageDisplayed() throws InterruptedException {
+        appTestPage.ValidateSignInPageDisplayed();
+    }
+
+    public void ValidateUserAccountTextFieldIsEmpty() throws InterruptedException {
+        appTestPage.ValidateUserAccountTextFieldIsEmpty();
+    }
+
+    public void ValidateExceptionMessageSignInDisplayed() throws InterruptedException {
+        appTestPage.ValidateExceptionMessageSignInDisplayed();
+    }
+
+
 }

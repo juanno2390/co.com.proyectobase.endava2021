@@ -12,7 +12,7 @@ public class AppTest {
         System.setProperty("webdriver.chrome.driver","src/test/resources/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.amazon.com/");
-        driver.findElement(By.cssSelector("input[id='twotabsearchtextbox']")).sendKeys("Software Test Design");
+        driver.findElement(By.cssSelector("input[id='twotabsearchtextbox']")).sendKeys("Software Test Design guide");
         driver.findElement(By.cssSelector("input[id='twotabsearchtextbox']")).sendKeys(Keys.ENTER);
         try {
             Thread.sleep(3000);

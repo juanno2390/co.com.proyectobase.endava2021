@@ -57,9 +57,38 @@ public class AppTestDefinitions extends PageObject {
     }
 
     @Then("^He should be able to see that is display: (.*)$")
-    public void HeShouldBeAbleToSeeThatIsDisplay(String tabMsg){
+    public void HeShouldBeAbleToSeeThatIsDisplay(String tabMsg) throws InterruptedException {
         appTestSteps.ValidateSelectecTab(tabMsg);
     }
+
+    //Another Assertions
+    @When("^He try to add the product in his wish List$")
+    public void heTryToAddTheProductInHisWishList() {
+        appTestSteps.ClickOnWishListButton();
+    }
+
+
+    @Then("^He should be able to see the sign-in is display$")
+    public void heShouldBeAbleToSeeTheSignInIsDisplay()  throws InterruptedException {
+        appTestSteps.ValidateSignInPageDisplayed();
+    }
+
+    @Then("^He should be able to see the user account field is empty$")
+    public void heShouldBeAbleToSeeTheUserAccountFieldIsEmpty()  throws InterruptedException {
+        appTestSteps.ValidateUserAccountTextFieldIsEmpty();
+    }
+
+    @When("^He try to sign-in$")
+    public void heTryToSignIn() {
+        appTestSteps.ClickOnSignInButton();
+    }
+
+    @Then("^He should be able to see the verify message for sign-in is display$")
+    public void heShouldBeAbleToSeeTheVerifyMessageForSignInIsDisplay()  throws InterruptedException {
+        appTestSteps.ValidateExceptionMessageSignInDisplayed();
+    }
+
+
 
 
 }

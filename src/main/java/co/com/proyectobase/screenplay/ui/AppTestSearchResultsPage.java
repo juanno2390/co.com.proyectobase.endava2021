@@ -19,4 +19,9 @@ public class AppTestSearchResultsPage extends PageObject {
     public static final Target PRODUCT_TAB = Target.the("PRODUCT_TAB")
             .located(By.cssSelector("#mediaTab_heading_2 > a > span > div:nth-child(1) > span"));
 
+    public static final Target SEARCH_TEXTBOX = Target.the("SEARCH_TEXTBOX")
+            .located(By.cssSelector("input[id='twotabsearchtextbox']"));
+
+    public static final Target WISH_LIST_BUTTON = Target.the("SEARCH_BUTTON")
+            .located(By.xpath("//a[@id='wishListMainButton-announce']"));
 }

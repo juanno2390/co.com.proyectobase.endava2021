@@ -1,9 +1,8 @@
 package co.com.proyectobase.screenplay.stepdefinitions;
 
+import co.com.proyectobase.screenplay.questions.ValidateInfoSignIn;
 import co.com.proyectobase.screenplay.questions.ValidateSearchResults;
-import co.com.proyectobase.screenplay.tasks.OpenPage;
-import co.com.proyectobase.screenplay.tasks.OpenProductDetail;
-import co.com.proyectobase.screenplay.tasks.SearchProduct;
+import co.com.proyectobase.screenplay.tasks.*;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -12,13 +11,13 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.ensure.web.ElementLocated;
-import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Arrays;
 import java.util.List;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
-import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.*;
 
 public class AppTestStepDefinitions {
 
@@ -56,6 +55,36 @@ public class AppTestStepDefinitions {
         }else{
             theActorInTheSpotlight.attemptsTo(Ensure.that(ElementLocated.by("#mediaTab_heading_2 > a > span > div:nth-child(1) > span")).isNotDisplayed());
         }
-        
     }
+
+    //Another Assertions
+    @When("^He try to add the product in his wish List$")
+    public void heTryToAddTheProductInHisWishList() {
+        theActorInTheSpotlight.attemptsTo(AddToWishList.ClickButton());
+    }
+
+
+    @Then("^He should be able to see the sign-in is display$")
+    public void heShouldBeAbleToSeeTheSignInIsDisplay() {
+        List<String> TitleOptions = Arrays.asList("Amazon Iniciar sesión", "Amazon Sign-In");
+        String titleDisplayed = hisBrowser.getTitle();
+        theActorInTheSpotlight.attemptsTo(Ensure.that(titleDisplayed).isIn(TitleOptions));
+    }
+
+    @Then("^He should be able to see the user account field is empty$")
+    public void heShouldBeAbleToSeeTheUserAccountFieldIsEmpty() {
+        theActorInTheSpotlight.should(seeThat(ValidateInfoSignIn.is(), isEmptyString()));
+    }
+
+    @When("^He try to sign-in$")
+    public void heTryToSignIn() {
+        theActorInTheSpotlight.attemptsTo(SignIn.ClickButton());
+    }
+
+    @Then("^He should be able to see the verify message for sign-in is display$")
+    public void heShouldBeAbleToSeeTheVerifyMessageForSignInIsDisplay() {
+        theActorInTheSpotlight.attemptsTo(Ensure.that(ElementLocated.by("//div[@id='auth-email-missing-alert']")).isDisplayed());
+    }
+
+
 }
